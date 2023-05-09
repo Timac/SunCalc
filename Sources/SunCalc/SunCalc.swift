@@ -89,6 +89,7 @@ public class SunCalc {
 		return MoonIllumination(fraction: fraction, phase: phase, angle: angle)
 	}
 
+	// swiftlint:disable cyclomatic_complexity
 	// swiftlint:disable:next function_body_length
     public class func getMoonTimes(date: Date, latitude: Double, longitude: Double) -> MoonTimes {
         let hc: Double = 0.133 * Constants.RAD()
@@ -175,6 +176,7 @@ public class SunCalc {
 
         return MoonTimes(rise: riseDate, set: setDate, alwaysUp: alwaysUp, alwaysDown: alwaysDown)
     }
+	// swiftlint:enable cyclomatic_complexity
 
 	init(date: Date, latitude: Double, longitude: Double) {
 		let lw: Double = Constants.RAD() * -longitude
