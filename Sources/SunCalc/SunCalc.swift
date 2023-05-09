@@ -154,20 +154,26 @@ public class SunCalc {
             }
             h0 = h2
         }
-        var result = [String: Any?]()
-        result["alwaysUp"] = false
-        result["alwaysDown"] = false
+
+		var alwaysUp = false
+		var alwaysDown = false
+		var riseDate: Date?
+		var setDate: Date?
         if rise != 0 {
-            result["rise"] = DateUtils.getHoursLater(date: date, hours: rise)
+			riseDate = DateUtils.getHoursLater(date: date, hours: rise)
         }
         if set != 0 {
-            result["set"] = DateUtils.getHoursLater(date: date, hours: set)
+			setDate = DateUtils.getHoursLater(date: date, hours: set)
         }
         if (rise == 0) && (set == 0) {
-            result[ye > 0 ? "alwaysUp" : "alwaysDown"] = true
+			if ye > 0 {
+				alwaysUp = true
+			} else {
+				alwaysDown = true
+			}
         }
 
-        return MoonTimes(rise: result["rise"] as? Date, set: result["set"] as? Date, alwaysUp: result["alwaysUp"] as! Bool, alwaysDown: result["alwaysDown"] as! Bool)
+        return MoonTimes(rise: riseDate, set: setDate, alwaysUp: alwaysUp, alwaysDown: alwaysDown)
     }
 
 	init(date: Date, latitude: Double, longitude: Double) {
