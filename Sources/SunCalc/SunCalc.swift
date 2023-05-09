@@ -75,9 +75,13 @@ public class SunCalc {
 
 		let sdist: Double = 149598000 // distance from Earth to Sun in km
 
-		let phi: Double = acos(sin(s.declination) * sin(m.declination) + cos(s.declination) * cos(m.declination) * cos(s.rightAscension - m.rightAscension))
-		let inc: Double = atan2(sdist * sin(phi), m.distance - sdist * cos(phi))
-		let angle: Double = atan2(cos(s.declination) * sin(s.rightAscension - m.rightAscension), sin(s.declination) * cos(m.declination) - cos(s.declination) * sin(m.declination) * cos(s.rightAscension - m.rightAscension))
+		let phi = acos(sin(s.declination) * sin(m.declination)
+					   + cos(s.declination) * cos(m.declination) * cos(s.rightAscension - m.rightAscension))
+		let inc = atan2(sdist * sin(phi), m.distance - sdist * cos(phi))
+		let angle = atan2(
+			cos(s.declination) * sin(s.rightAscension - m.rightAscension),
+			sin(s.declination) * cos(m.declination)
+				- cos(s.declination) * sin(m.declination) * cos(s.rightAscension - m.rightAscension))
 
 		let fraction: Double = (1 + cos(inc)) / 2
 		let phase: Double = 0.5 + 0.5 * inc * (angle < 0 ? -1 : 1) / Constants.PI()
@@ -85,15 +89,33 @@ public class SunCalc {
 		return MoonIllumination(fraction: fraction, phase: phase, angle: angle)
 	}
 
+	// swiftlint:disable:next function_body_length
     public class func getMoonTimes(date: Date, latitude: Double, longitude: Double) -> MoonTimes {
         let hc: Double = 0.133 * Constants.RAD()
-        var h0: Double = SunCalc.getMoonPosition(timeAndDate: date, latitude: latitude, longitude: longitude).altitude - hc
-        var h1: Double = 0, h2: Double = 0, rise: Double = 0, set: Double = 0, a: Double = 0, b: Double = 0, xe: Double = 0, ye: Double = 0, d: Double = 0, roots: Double = 0, x1: Double = 0, x2: Double = 0, dx: Double = 0
+        var h0: Double = SunCalc.getMoonPosition(
+			timeAndDate: date,
+			latitude: latitude,
+			longitude: longitude).altitude - hc
+        var h1: Double = 0
+		var h2: Double = 0
+		var rise: Double = 0
+		var set: Double = 0
+		var a: Double = 0
+		var b: Double = 0
+		var xe: Double = 0
+		var ye: Double = 0
+		var d: Double = 0
+		var roots: Double = 0
+		var x1: Double = 0
+		var x2: Double = 0
+		var dx: Double = 0
 
         // go in 2-hour chunks, each time seeing if a 3-point quadratic curve crosses zero (which means rise or set)
         for i in stride(from: 1, through: 24, by: 2) {
-            h1 = SunCalc.getMoonPosition(timeAndDate: DateUtils.getHoursLater(date: date, hours: Double(i))!, latitude: latitude, longitude: longitude).altitude - hc
-            h2 = SunCalc.getMoonPosition(timeAndDate: DateUtils.getHoursLater(date: date, hours: Double(i + 1))!, latitude: latitude, longitude: longitude).altitude - hc
+			let date1 = DateUtils.getHoursLater(date: date, hours: Double(i))!
+            h1 = SunCalc.getMoonPosition(timeAndDate: date1, latitude: latitude, longitude: longitude).altitude - hc
+			let date2 = DateUtils.getHoursLater(date: date, hours: Double(i + 1))!
+            h2 = SunCalc.getMoonPosition(timeAndDate: date2, latitude: latitude, longitude: longitude).altitude - hc
             a = (h0 + h2) / 2 - h1
             b = (h2 - h0) / 2
             xe = -b / (2 * a)
