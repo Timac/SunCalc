@@ -27,6 +27,7 @@ public class SunCalc {
 	public var nauticalDawn: Date
 	public var dawn: Date
 
+	// swiftlint:disable:next function_parameter_count
 	class func getSetJ(h: Double, phi: Double, dec: Double, lw: Double, n: Double, M: Double, L: Double) -> Double {
         let w: Double = TimeUtils.getHourAngle(h: h, phi: phi, d: dec)
         let a: Double = TimeUtils.getApproxTransit(ht: w, lw: lw, n: n)
@@ -46,7 +47,9 @@ public class SunCalc {
         let c: EquatorialCoordinates = SunUtils.getSunCoords(d: d)
         let H: Double = PositionUtils.getSiderealTime(d: d, lw: lw) - c.rightAscension
 
-        return SunPosition(azimuth: PositionUtils.getAzimuth(h: H, phi: phi, dec: c.declination), altitude: PositionUtils.getAltitude(h: H, phi: phi, dec: c.declination))
+		let azimuth = PositionUtils.getAzimuth(h: H, phi: phi, dec: c.declination)
+		let altitude = PositionUtils.getAltitude(h: H, phi: phi, dec: c.declination)
+		return SunPosition(azimuth: azimuth, altitude: altitude)
 	}
 
 	public class func getMoonPosition(timeAndDate: Date, latitude: Double, longitude: Double) -> MoonPosition {
@@ -59,9 +62,10 @@ public class SunCalc {
         var h: Double = PositionUtils.getAltitude(h: H, phi: phi, dec: c.declination)
 
 		// altitude correction for refraction
-		h = h + Constants.RAD() * 0.017 / tan(h + Constants.RAD() * 10.26 / (h + Constants.RAD() * 5.10))
+		h += h Constants.RAD() * 0.017 / tan(h + Constants.RAD() * 10.26 / (h + Constants.RAD() * 5.10))
 
-        return MoonPosition(azimuth: PositionUtils.getAzimuth(h: H, phi: phi, dec: c.declination), altitude: h, distance: c.distance)
+		let azimuth = PositionUtils.getAzimuth(h: H, phi: phi, dec: c.declination)
+		return MoonPosition(azimuth: azimuth, altitude: h, distance: c.distance)
 	}
 
 	public class func getMoonIllumination(timeAndDate: Date) -> MoonIllumination {
