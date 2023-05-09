@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -18,6 +17,4 @@ public class MoonIllumination {
 		self.phase = phase
 		self.angle = angle
 	}
-	
 }
-// swiftlint:enable all

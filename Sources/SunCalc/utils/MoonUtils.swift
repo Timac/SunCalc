@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -24,4 +23,3 @@ class MoonUtils {
         return GeocentricCoordinates(rightAscension: PositionUtils.getRightAscension(l:l, b: b), declination: PositionUtils.getDeclination(l: l, b: b), distance: dt)
 	}
 }
-// swiftlint:enable all

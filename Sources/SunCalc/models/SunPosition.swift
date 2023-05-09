@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -17,4 +16,3 @@ public class SunPosition {
 		self.altitude = altitude
 	}
 }
-// swiftlint:enable all

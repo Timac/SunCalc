@@ -4,8 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-//
-// swiftlint:disable all
 
 import Foundation
 
@@ -212,4 +210,3 @@ public class SunCalc {
 
 	}
 }
-// swiftlint:enable all

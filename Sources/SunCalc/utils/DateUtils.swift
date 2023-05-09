@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -33,4 +32,3 @@ class DateUtils {
         return calendar.date(byAdding: .second, value: Int(hours*60*60), to: date)
     }
 }
-// swiftlint:enable all

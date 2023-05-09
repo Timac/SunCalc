@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -37,6 +36,4 @@ class PositionUtils {
         }
         return 0.0002967 / tan(hCalc + 0.00312536 / (hCalc + 0.08901179));
     }
-
 }
-// swiftlint:enable all

@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -34,4 +33,3 @@ class TimeUtils {
         return TimeUtils.getSolarTransitJ(ds: a, M: M, L: L)
     }
 }
-// swiftlint:enable all

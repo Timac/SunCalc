@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -19,4 +18,3 @@ class GeocentricCoordinates {
 		self.distance = distance
 	}
 }
-// swiftlint:enable all

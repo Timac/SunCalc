@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -34,4 +33,3 @@ class SunUtils {
         return EquatorialCoordinates(rightAscension: PositionUtils.getRightAscension(l: L, b: 0), declination: PositionUtils.getDeclination(l: L, b: 0))
 	}
 }
-// swiftlint:enable all

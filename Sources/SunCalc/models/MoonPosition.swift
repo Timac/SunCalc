@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 10/2/14.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -19,4 +18,3 @@ public class MoonPosition {
 		self.distance = distance
 	}
 }
-// swiftlint:enable all

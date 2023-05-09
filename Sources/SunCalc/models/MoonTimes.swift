@@ -4,7 +4,6 @@
 //
 //  Created by Shaun Meredith on 7/16/19.
 //
-// swiftlint:disable all
 
 import Foundation
 
@@ -21,4 +20,3 @@ public class MoonTimes {
         self.alwaysDown = alwaysDown
     }
 }
-// swiftlint:enable all
