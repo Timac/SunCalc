@@ -29,6 +29,7 @@ class TimeUtils {
 		return acos((sin(h) - sin(phi) * sin(d)) / (cos(phi) * cos(d)))
 	}
 
+	// swiftlint:disable:next function_parameter_count
     class func getSetJ(h: Double, lw: Double, phi: Double, dec: Double, n: Double, M: Double, L: Double) -> Double {
         let w: Double = TimeUtils.getHourAngle(h: h, phi: phi, d: dec)
         let a: Double = TimeUtils.getApproxTransit(ht: w, lw: lw, n: n  )

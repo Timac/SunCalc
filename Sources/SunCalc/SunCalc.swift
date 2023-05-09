@@ -62,7 +62,7 @@ public class SunCalc {
         var h: Double = PositionUtils.getAltitude(h: H, phi: phi, dec: c.declination)
 
 		// altitude correction for refraction
-		h += h Constants.RAD() * 0.017 / tan(h + Constants.RAD() * 10.26 / (h + Constants.RAD() * 5.10))
+		h += Constants.RAD() * 0.017 / tan(h + Constants.RAD() * 10.26 / (h + Constants.RAD() * 5.10))
 
 		let azimuth = PositionUtils.getAzimuth(h: H, phi: phi, dec: c.declination)
 		return MoonPosition(azimuth: azimuth, altitude: h, distance: c.distance)
