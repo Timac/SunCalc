@@ -33,20 +33,20 @@ final class SunCalcTests: XCTestCase {
 		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 		formatter.timeZone = TimeZone(abbreviation: "GMT")
 
-        XCTAssertEqual(formatter.string(from: sunCalc.solarNoon), "2013-03-05T10:10:57Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.nadir), "2013-03-04T22:10:57Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.sunrise), "2013-03-05T04:34:57Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.sunset), "2013-03-05T15:46:56Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.sunriseEnd), "2013-03-05T04:38:19Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.sunsetStart), "2013-03-05T15:43:34Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.dawn), "2013-03-05T04:02:17Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.dusk), "2013-03-05T16:19:36Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.nauticalDawn), "2013-03-05T03:24:31Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.nauticalDusk), "2013-03-05T16:57:22Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.nightEnd), "2013-03-05T02:46:17Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.night), "2013-03-05T17:35:36Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.goldenHourEnd), "2013-03-05T05:19:01Z")
-		XCTAssertEqual(formatter.string(from: sunCalc.goldenHour), "2013-03-05T15:02:52Z")
+        XCTAssertEqual(formatter.string(from: sunCalc.solarNoon!), "2013-03-05T10:10:57Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.nadir!), "2013-03-04T22:10:57Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.sunrise!), "2013-03-05T04:34:57Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.sunset!), "2013-03-05T15:46:56Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.sunriseEnd!), "2013-03-05T04:38:19Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.sunsetStart!), "2013-03-05T15:43:34Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.dawn!), "2013-03-05T04:02:17Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.dusk!), "2013-03-05T16:19:36Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.nauticalDawn!), "2013-03-05T03:24:31Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.nauticalDusk!), "2013-03-05T16:57:22Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.nightEnd!), "2013-03-05T02:46:17Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.night!), "2013-03-05T17:35:36Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.goldenHourEnd!), "2013-03-05T05:19:01Z")
+		XCTAssertEqual(formatter.string(from: sunCalc.goldenHour!), "2013-03-05T15:02:52Z")
 	}
 
 	func test_sun_getPosition() {
@@ -91,18 +91,19 @@ final class SunCalcTests: XCTestCase {
     }
 
 	func test_README_example() {
-		let date: Date = Date()
-        let sunCalc: SunCalc = SunCalc.getTimes(date: date, latitude: 51.5, longitude: -0.1)
+		let date = Date()
 
-		let formatter: DateFormatter = DateFormatter()
-		formatter.dateFormat = "HH:mm"
-		formatter.timeZone = TimeZone(abbreviation: "GMT")
-		let sunriseString: String = formatter.string(from: sunCalc.sunrise)
-		print("sunrise is at \(sunriseString)")
+		let sunCalc = SunCalc.getTimes(date: date, latitude: 51.5, longitude: -0.1)
+		if let sunrise = sunCalc.sunrise {
+			debugPrint("sunrise: \(sunrise.formatted())")
+		}
 
-        let sunPos: SunPosition = SunCalc.getSunPosition(timeAndDate: date, latitude: 51.5, longitude: -0.1)
+		if let sunset = sunCalc.sunset {
+			debugPrint("sunset: \(sunset.formatted())")
+		}
 
-		let sunriseAzimuth: Double = sunPos.azimuth * 180 / Constants.PI()
-		print("sunrise azimuth: \(sunriseAzimuth)")
+		let sunPos = SunCalc.getSunPosition(timeAndDate: date, latitude: 51.5, longitude: -0.1)
+		let sunriseAzimuth = sunPos.azimuth * 180 / Constants.PI()
+		debugPrint("sunriseAzimuth: \(sunriseAzimuth)")
 	}
 }

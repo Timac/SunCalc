@@ -23,7 +23,11 @@ class DateUtils {
 	}
 
 	// swiftlint:disable:next identifier_name
-	class func fromJulian(j: Double) -> Date {
+	class func fromJulian(j: Double) -> Date? {
+		guard j.isFinite else {
+			return nil
+		}
+
 		let timeInterval = (j + 0.5 - J1970) * DAY_SECONDS
 		return Date(timeIntervalSince1970: timeInterval)
 	}

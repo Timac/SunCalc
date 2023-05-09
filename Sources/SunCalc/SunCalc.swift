@@ -12,20 +12,20 @@ import Foundation
 public class SunCalc {
 	let J0: Double = 0.0009
 
-	public var sunrise: Date
-	public var sunriseEnd: Date
-	public var goldenHourEnd: Date
-	public var solarNoon: Date
-	public var goldenHour: Date
-	public var sunsetStart: Date
-	public var sunset: Date
-	public var dusk: Date
-	public var nauticalDusk: Date
-	public var night: Date
-	public var nadir: Date
-	public var nightEnd: Date
-	public var nauticalDawn: Date
-	public var dawn: Date
+	public var sunrise: Date?
+	public var sunriseEnd: Date?
+	public var goldenHourEnd: Date?
+	public var solarNoon: Date?
+	public var goldenHour: Date?
+	public var sunsetStart: Date?
+	public var sunset: Date?
+	public var dusk: Date?
+	public var nauticalDusk: Date?
+	public var night: Date?
+	public var nadir: Date?
+	public var nightEnd: Date?
+	public var nauticalDawn: Date?
+	public var dawn: Date?
 
 	// swiftlint:disable:next function_parameter_count
 	class func getSetJ(h: Double, phi: Double, dec: Double, lw: Double, n: Double, M: Double, L: Double) -> Double {
