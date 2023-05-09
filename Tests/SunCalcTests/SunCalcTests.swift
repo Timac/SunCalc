@@ -27,7 +27,7 @@ final class SunCalcTests: XCTestCase {
     }
 
     func test_sun_getTimes() {
-        let sunCalc: SunCalc = SunCalc.getTimes(date: date, latitude: LAT, longitude: LNG)
+        let sunCalc = SunCalc.getTimes(date: date, latitude: LAT, longitude: LNG)
 
 		let formatter: DateFormatter = DateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
@@ -47,6 +47,20 @@ final class SunCalcTests: XCTestCase {
 		XCTAssertEqual(formatter.string(from: sunCalc.night!), "2013-03-05T17:35:36Z")
 		XCTAssertEqual(formatter.string(from: sunCalc.goldenHourEnd!), "2013-03-05T05:19:01Z")
 		XCTAssertEqual(formatter.string(from: sunCalc.goldenHour!), "2013-03-05T15:02:52Z")
+	}
+
+	func test_sun_getTimes_invalid() {
+		let sunCalc = SunCalc.getTimes(date: date, latitude: 84.0, longitude: 111.0)
+
+		XCTAssertNotEqual(sunCalc.sunrise, nil)
+		XCTAssertNotEqual(sunCalc.sunriseEnd, nil)
+		XCTAssertNotEqual(sunCalc.sunset, nil)
+		XCTAssertNotEqual(sunCalc.sunsetStart, nil)
+
+		XCTAssertEqual(sunCalc.goldenHourEnd, nil)
+		XCTAssertEqual(sunCalc.goldenHour, nil)
+		XCTAssertEqual(sunCalc.night, nil)
+		XCTAssertEqual(sunCalc.nightEnd, nil)
 	}
 
 	func test_sun_getPosition() {
