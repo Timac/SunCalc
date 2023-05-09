@@ -2,6 +2,9 @@
 
 Swift package to calculate the Sun and Moon positions
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FTimac%2FSunCalc%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Timac/SunCalc)
+
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FTimac%2FSunCalc%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Timac/SunCalc)
 
 # Description
 
