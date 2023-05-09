@@ -7,6 +7,8 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
+
 class PositionUtils {
 
 	class func getRightAscension(l: Double, b: Double) -> Double {
@@ -37,3 +39,5 @@ class PositionUtils {
         return 0.0002967 / tan(hCalc + 0.00312536 / (hCalc + 0.08901179))
     }
 }
+
+// swiftlint:enable identifier_name

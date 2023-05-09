@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable:next identifier_name
 let π = 3.14159265358979
 
 class Constants {
@@ -15,6 +16,7 @@ class Constants {
 		return π / 180.0
 	}
 
+	// swiftlint:disable:next identifier_name
 	class func E() -> Double {
 		return Constants.RAD() * 23.4397 // obliquity of the earth
 	}

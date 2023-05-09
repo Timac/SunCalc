@@ -7,8 +7,13 @@
 
 import Foundation
 
+// swiftlint:disable:next identifier_name
 let DAY_SECONDS: Double = 60 * 60 * 24
+
+// swiftlint:disable:next identifier_name
 let J1970: Double = 2440588
+
+// swiftlint:disable:next identifier_name
 let J2000: Double = 2451545
 
 class DateUtils {
@@ -17,6 +22,7 @@ class DateUtils {
 		return Double(date.timeIntervalSince1970) / DAY_SECONDS - 0.5 + J1970
 	}
 
+	// swiftlint:disable:next identifier_name
 	class func fromJulian(j: Double) -> Date {
 		let timeInterval = (j + 0.5 - J1970) * DAY_SECONDS
 		return Date(timeIntervalSince1970: timeInterval)

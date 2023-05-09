@@ -7,6 +7,8 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
+
 public class SunCalc {
 	let J0: Double = 0.0009
 
@@ -67,7 +69,7 @@ public class SunCalc {
         let s: EquatorialCoordinates = SunUtils.getSunCoords(d: d)
         let m: GeocentricCoordinates = MoonUtils.getMoonCoords(d: d)
 
-		let sdist: Double = 149598000; // distance from Earth to Sun in km
+		let sdist: Double = 149598000 // distance from Earth to Sun in km
 
 		let phi: Double = acos(sin(s.declination) * sin(m.declination) + cos(s.declination) * cos(m.declination) * cos(s.rightAscension - m.rightAscension))
 		let inc: Double = atan2(sdist * sin(phi), m.distance - sdist * cos(phi))
@@ -209,3 +211,5 @@ public class SunCalc {
 
 	}
 }
+
+// swiftlint:enable identifier_name

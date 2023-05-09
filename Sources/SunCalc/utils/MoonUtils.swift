@@ -9,6 +9,8 @@ import Foundation
 
 class MoonUtils {
 
+	// swiftlint:disable identifier_name
+
 	class func getMoonCoords(d: Double) -> GeocentricCoordinates {
 		// geocentric ecliptic coordinates of the moon
 
@@ -24,4 +26,6 @@ class MoonUtils {
 		let declination = PositionUtils.getDeclination(l: l, b: b)
 		return GeocentricCoordinates(rightAscension: rightAscension, declination: declination, distance: dt)
 	}
+
+	// swiftlint:enable identifier_name
 }

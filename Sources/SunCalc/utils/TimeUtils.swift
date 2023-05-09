@@ -7,6 +7,8 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
+
 let J0: Double = 0.0009
 
 class TimeUtils {
@@ -33,3 +35,5 @@ class TimeUtils {
         return TimeUtils.getSolarTransitJ(ds: a, M: M, L: L)
     }
 }
+
+// swiftlint:enable identifier_name

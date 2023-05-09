@@ -7,6 +7,8 @@
 
 import Foundation
 
+// swiftlint:disable identifier_name
+
 class SunUtils {
 
 	class func getSolarMeanAnomaly(d: Double) -> Double {
@@ -30,6 +32,10 @@ class SunUtils {
         let M: Double = SunUtils.getSolarMeanAnomaly(d: d)
         let L: Double = SunUtils.getEclipticLongitudeM(M: M)
 
-        return EquatorialCoordinates(rightAscension: PositionUtils.getRightAscension(l: L, b: 0), declination: PositionUtils.getDeclination(l: L, b: 0))
+		let rightAscension = PositionUtils.getRightAscension(l: L, b: 0)
+		let declination = PositionUtils.getDeclination(l: L, b: 0)
+		return EquatorialCoordinates(rightAscension: rightAscension, declination: declination)
 	}
 }
+
+// swiftlint:enable identifier_name
