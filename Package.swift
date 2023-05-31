@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SunCalc",
     defaultLocalization: "en",
-	platforms: [.iOS(.v16), .macCatalyst(.v16), .macOS(.v13)],
+	platforms: [.iOS(.v15), .macCatalyst(.v16), .macOS(.v13)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
